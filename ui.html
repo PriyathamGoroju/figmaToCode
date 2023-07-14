@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+ 
+<!-- <h2>FIGMA TO CODE</h2>
+<p class="">This will print the html code in console.</p>
+<button id="create">Code</button>
+<button id="cancel">Cancel</button>
+
+<script>
+
+document.getElementbyId('create').onclick = () => {
+  figma.ui.postMessage({ pluginMessage: { type: 'figmaToCode'} }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  figma.ui.parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script> -->
+<html lang="en">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>figmaToCode</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+      pre {
+        background-color: #f5f5f5;
+        padding: 10px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <pre id="htmlCodeContainer"></pre>
+    <h2>Figma to Html code</h2>
+    <p>This will give the html code for the figma design</p>
+
+    <button id="create">Generate HTML Code</button>
+    <button id="cancel">Cancel</button>
+
+    <script>
+      // Plugin UI code
+      const createButton = document.getElementById('create');
+      const cancelButton = document.getElementById('cancel');
+      const htmlCodeContainer = document.getElementById('htmlCodeContainer');
+
+      createButton.addEventListener('click', () => {
+        parent.postMessage({ pluginMessage: { type: 'figmaToCode' } }, '*');
+      });
+
+      cancelButton.addEventListener('click', () => {
+        parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+      });
+
+      window.addEventListener('message', event => {
+        const { type, htmlCode } = event.data.pluginMessage;
+
+        if (type === 'htmlCode') {
+          htmlCodeContainer.textContent = htmlCode;
+        }
+      });
+    </script>
+  </body>
+</html>
