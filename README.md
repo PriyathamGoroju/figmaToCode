@@ -8,8 +8,8 @@ libraries. You can find the download link here:
 
 Next, install TypeScript using the command:
 
-  npm install -g typescript
+```npm install -g typescript```
 
 Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
 
-  npm install --save-dev @figma/plugin-typings
+```  npm install --save-dev @figma/plugin-typings```
